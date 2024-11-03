@@ -27,22 +27,6 @@ df['Foot Traffic Volume'] = pd.to_numeric(df['Foot Traffic Volume'], errors='coe
 # Streamlit app
 st.title('Business Foot Traffic Analysis')
 
-# Display the most and least populated areas
-st.write('### Most and Least Populated Areas')
-
-# Calculate foot traffic by zip code
-foot_traffic_by_zip = df.groupby('Zip Code')['Foot Traffic Volume'].sum().reset_index()
-
-# Display the most populated areas
-most_populated = foot_traffic_by_zip.nlargest(5, 'Foot Traffic Volume')
-st.write('#### Most Populated Areas')
-st.table(most_populated)
-
-# Display the least populated areas
-least_populated = foot_traffic_by_zip.nsmallest(5, 'Foot Traffic Volume')
-st.write('#### Least Populated Areas')
-st.table(least_populated)
-
 # Create columns for dropdown menus
 col1, col2 = st.columns(2)
 
